@@ -1,1 +1,71 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #111;
+  font-family: sans-serif;
+}
 
+/* Container */
+.wrapper {
+  position: relative;
+  width: 160px;
+  height: 80px;
+}
+
+/* Shared button style */
+.btn {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: none;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(.68,-0.55,.27,1.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Initial Play */
+.play {
+  left: 40px;
+  background: #6200ea;
+  z-index: 2;
+}
+
+/* Pause */
+.pause {
+  left: 0;
+  background: #03dac6;
+  transform: scale(0);
+}
+
+/* Seek */
+.seek {
+  right: 0;
+  background: #ff9800;
+  transform: scale(0);
+}
+
+/* Active split state */
+.wrapper.active .play {
+  transform: scale(0);
+}
+
+.wrapper.active .pause {
+  transform: scale(1);
+}
+
+.wrapper.active .seek {
+  transform: scale(1);
+}
+
+/* Optional glow while playing */
+.wrapper.active .pause {
+  box-shadow: 0 0 20px rgba(3,218,198,0.7);
+}
