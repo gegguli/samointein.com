@@ -1,4 +1,4 @@
-const audio = document.getElementById("audio");
+const audio = window.AudioController.audio;
 const lyricsContainer = document.getElementById("lyrics");
 
 let lyrics = [];
