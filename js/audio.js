@@ -1,5 +1,4 @@
 const audio = document.getElementById("audio");
-
 const JUMP_TIME = 30; // seconds
 
 function playAudio() {
@@ -22,8 +21,8 @@ function seekToPoint() {
   audio.currentTime = JUMP_TIME;
 }
 
-// Make functions globally accessible for ui.js
 window.AudioController = {
+  audio,
   playAudio,
   togglePause,
   seekToPoint
