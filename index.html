@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Audio App</title>
+    <!-- MDI Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #121212;
+        color: white;
+      }
+      .container {
+        text-align: center;
+        width: 100%;
+        max-width: 400px;
+        padding: 20px;
+      }
+      button {
+        width: 100%;
+        padding: 20px;
+        font-size: 20px;
+        border: none;
+        border-radius: 12px;
+        margin: 10px 0;
+        cursor: pointer;
+        transition: 0.2s ease;
+      }
+      .main-btn {
+        background: #6200ea;
+        color: white;
+        font-size: 28px;
+      }
+      .secondary-btn {
+        background: #03dac6;
+        color: black;
+      }
+      .hidden {
+        display: none;
+      }
+      i {
+        font-size: 36px;
+        vertical-align: middle;
+      }
+      audio {
+        width: 100%;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+  <div class="container">
+    <!-- Single Large Button -->
+    <button id="playBtn" class="main-btn">
+      <i class="mdi mdi mdi-cup"></i>
+    </button>
+    <!-- Split Buttons -->
+    <div id="controls" class="hidden">
+      <button id="pauseBtn" class="secondary-btn">
+        <i class="mdi mdi mdi-cup-off"></i> Pause
+      </button>
+      <button id="jumpBtn" class="secondary-btn">
+        <i class="mdi mdi-cup-water"></i> Jump to Point
+      </button>
+    </div>
+    <!-- Audio -->
+    <audio id="audio" src="your-audio-file.mp3" controls></audio>
+  </div>
+    <script>
+      const playBtn = document.getElementById("playBtn");
+      const pauseBtn = document.getElementById("pauseBtn");
+      const jumpBtn = document.getElementById("jumpBtn");
+      const controls = document.getElementById("controls");
+      const audio = document.getElementById("audio");
+      const JUMP_TIME = 30; // seconds (hardcoded timestamp)
+      playBtn.addEventListener("click", () => {
+        audio.play();
+        playBtn.classList.add("hidden");
+        controls.classList.remove("hidden");
+      });
+      pauseBtn.addEventListener("click", () => {
+        audio.pause();
+      });
+      jumpBtn.addEventListener("click", () => {
+        audio.currentTime = JUMP_TIME;
+      });
+    </script>
+  </body>
+</html>
