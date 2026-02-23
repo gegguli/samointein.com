@@ -5,7 +5,7 @@ let lyrics = [];
 let currentIndex = -1;
 
 // Load LRC file
-fetch("lyrics.lrc")
+fetch("assets/kolahtaa.lrc")
   .then(response => response.text())
   .then(text => {
     lyrics = parseLRC(text);
