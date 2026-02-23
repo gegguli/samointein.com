@@ -69,3 +69,30 @@ body {
 .wrapper.active .pause {
   box-shadow: 0 0 20px rgba(3,218,198,0.7);
 }
+
+/* Lyrics container */
+.lyrics {
+  position: absolute;
+  bottom: 40px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 40vh;
+  overflow-y: auto;
+  text-align: center;
+  color: #aaa;
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.line {
+  opacity: 0.4;
+  transition: all 0.3s ease;
+  padding: 4px 0;
+}
+
+.line.active {
+  opacity: 1;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+}
