@@ -19,7 +19,6 @@ function seekToPoint() {
 }
 
 window.AudioController = {
-  audio,
   playAudio,
   pauseAudio,
   seekToPoint
