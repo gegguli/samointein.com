@@ -4,29 +4,25 @@
   <meta charset="UTF-8">
   <title>Kolahtaa</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
   <div class="wrapper" id="wrapper">
-    <button class="btn play" id="playBtn">
-      <span class="icon">▶</span>
-    </button>
-
-    <button class="btn pause" id="pauseBtn">
-      <span class="icon">⏸</span>
+    <button class="btn main-btn" id="mainBtn">
+      <i class="mdi mdi-cup" id="mainIcon"></i>
     </button>
 
     <button class="btn seek" id="seekBtn">
-      <span class="icon">⏭</span>
+      <i class="mdi mdi-skip-forward"></i>
     </button>
   </div>
 
   <div id="lyrics" class="lyrics"></div>
-  
+
   <audio id="audio" src="assets/kolahtaa.opus"></audio>
 
-  <script src="js/ui.js" defer></script>
   <script src="js/audio.js" defer></script>
   <script src="js/lyrics.js" defer></script>
 </body>
