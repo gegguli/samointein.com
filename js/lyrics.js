@@ -1,11 +1,14 @@
 const lyricsAudio = document.getElementById("audio");
 const lyricsContainer = document.getElementById("lyrics");
-const lyricsJSON = "assets/kolahtaa.json"
+const lyricsJSON = "assets/kolahtaa.json";
+
+// time (in seconds) when lyrics should appear
+const lyricsAppearTime = 5;
 
 // ======== VARIABLES ========
 let paragraphs = []; 
 let currentWordIndex = -1;
-fetchJSONData(lyricsJSON)
+fetchJSONData(lyricsJSON);
 
 async function fetchJSONData(JSON) {
   const response = await fetch(JSON);
@@ -73,8 +76,17 @@ function renderLyrics(paragraphs) {
 
 // ======== LYRICS SYNC ========
 audio.addEventListener("timeupdate", () => {
-  if (!paragraphs || paragraphs.length === 0) return;
   const time = audio.currentTime;
+
+  // show or hide lyrics based on threshold
+  if (time >= lyricsAppearTime) {
+    lyricsContainer.classList.add("visible");
+  } else {
+    lyricsContainer.classList.remove("visible");
+    return;
+  }
+
+  if (!paragraphs || paragraphs.length === 0) return;
   //console.log(paragraphs)
   for (let i = 0; i < paragraphs.length; i++) {
     const pStartTime = paragraphs[i][0][0].start
@@ -92,23 +104,11 @@ audio.addEventListener("timeupdate", () => {
               currentParagraphIndex = i;
               currentLineIndex = j;
               currentWordIndex = k;
-              
             }
           }
         }
       }
-
     }
-
-
-    //if (time >= lyrics[i].time && (i === lyrics.length - 1 || time < lyrics[i + 1].time)) {
-    //  if (currentWordIndex !== i) {
-    //    setActiveWord(i);
-    //    currentWordIndex = i;
-    //  }
-    //  break;
-    //}
-
   }
 });
 

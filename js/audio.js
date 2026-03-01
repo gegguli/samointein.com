@@ -1,10 +1,10 @@
-const wrapper = document.getElementById("wrapper");
+const player = document.getElementById("player");
 const playBtn = document.getElementById("playBtn");
 const pauseBtn = document.getElementById("pauseBtn");
 const seekBtn = document.getElementById("seekBtn");
 
 const audio = document.getElementById("audio");
-const JUMP_TIME = 30; // seconds
+const JUMP_TIME = 64.6; // seconds
 
 function playAudio() {
   audio.play();
@@ -30,12 +30,12 @@ mainBtn.addEventListener("click", () => {
     audio.play();
     mainIcon.classList.remove("mdi-cup");
     mainIcon.classList.add("mdi-cup-off");
-    wrapper.classList.add("active"); // expand wrapper + show seek
+    player.classList.add("active"); // expand wrapper + show seek
   } else {
     audio.pause();
     mainIcon.classList.remove("mdi-cup-off");
     mainIcon.classList.add("mdi-cup");
-    wrapper.classList.remove("active"); // collapse wrapper + hide seek
+    player.classList.remove("active"); // collapse wrapper + hide seek
   }
 });
 
@@ -50,11 +50,11 @@ seekBtn.addEventListener("click", () => {
 audio.addEventListener("play", () => {
   mainIcon.classList.remove("mdi-cup");
   mainIcon.classList.add("mdi-cup-off");
-  wrapper.classList.add("active");
+  player.classList.add("active");
 });
 
 audio.addEventListener("pause", () => {
   mainIcon.classList.remove("mdi-cup-off");
   mainIcon.classList.add("mdi-cup");
-  wrapper.classList.remove("active");
+  player.classList.remove("active");
 });

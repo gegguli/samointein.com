@@ -1,7 +1,6 @@
 {
   "words": [
-    {"pIndex": 0, "lIndex": 0, "start": 7.32, "end": 8.14, "text": "Erä"},
-    {"pIndex": 0, "lIndex": 0, "start": 8.14, "end": 8.54, "text": "koira,"},
+    {"pIndex": 0, "lIndex": 0, "start": 7.32, "end": 8.54, "text": "Eräkoira,"},
     {"pIndex": 0, "lIndex": 0, "start": 8.56, "end": 8.96, "text": "freesi"},
     {"pIndex": 0, "lIndex": 0, "start": 8.96, "end": 9.14, "text": "ja"},
     {"pIndex": 0, "lIndex": 0, "start": 9.14, "end": 9.48, "text": "kliini"},
@@ -10,7 +9,7 @@
     {"pIndex": 0, "lIndex": 1, "start": 10.94, "end": 11.12, "text": "on"},
     {"pIndex": 0, "lIndex": 1, "start": 11.12, "end": 11.54, "text": "kiinni"},
     {"pIndex": 0, "lIndex": 2, "start": 11.54, "end": 12.20, "text": "Thono"},
-    {"pIndex": 0, "lIndex": 2, "start": 12.20, "end": 12.50, "text": "slono,"},
+    {"pIndex": 0, "lIndex": 2, "start": 12.20, "end": 12.50, "text": "Slono,"},
     {"pIndex": 0, "lIndex": 2, "start": 12.54, "end": 13.50, "text": "lähiörotta"},
     {"pIndex": 0, "lIndex": 3, "start": 13.50, "end": 14.18, "text": "Turn it up,"},
     {"pIndex": 0, "lIndex": 3, "start": 14.18, "end": 14.68, "text": "turn it up"},
@@ -52,7 +51,7 @@
     {"pIndex": 3, "lIndex": 16, "start": 33.78, "end": 34.02, "text": "On"},
     {"pIndex": 3, "lIndex": 16, "start": 34.02, "end": 34.38, "text": "täällä"},
     {"pIndex": 3, "lIndex": 16, "start": 34.38, "end": 34.74, "text": "monni"},
-    {"pIndex": 3, "lIndex": 16, "start": 34.74, "end": 34.84, "text": "kuin"},
+    {"pIndex": 3, "lIndex": 16, "start": 34.74, "end": 34.80, "text": "kuin"},
     {"pIndex": 3, "lIndex": 16, "start": 34.84, "end": 35.14, "text": "moni"},
     {"pIndex": 3, "lIndex": 16, "start": 35.14, "end": 35.68, "text": "karkeella"},
     {"pIndex": 3, "lIndex": 17, "start": 35.68, "end": 36.10, "text": "Joku"},
