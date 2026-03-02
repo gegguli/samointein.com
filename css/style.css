@@ -55,7 +55,7 @@ body {
 }
 
 .seek {
-  background: #ff9800;
+  background: #ffcc80;
   opacity: 1;
   transform: translateY(-175px);
   pointer-events: none;
@@ -108,9 +108,17 @@ body {
   color: #aaa;
   font-size: 24px;
   line-height: 1.6;
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* IE 10+ */
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+/* hide webkit scrollbars */
+.lyrics::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 .lyrics.visible {
