@@ -1,31 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Kolahtaa</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <title>Kolahtaa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  </head>
 
-<body>
-
-  <div class="wrapper">
-    <div class="player" id="player">
-      <button class="btn main-btn" id="mainBtn">
-        <i class="mdi mdi-cup" id="mainIcon"></i>
-      </button>
-      <button class="btn seek" id="seekBtn">
-        <i class="mdi mdi-skip-forward"></i>
-      </button>
+  <body>
+    <div class="wrapper">
+      <div class="player" id="player">
+        <button class="btn main-btn" id="mainBtn">
+          <i class="mdi mdi-cup" id="mainIcon"></i>
+        </button>
+        <button class="btn seek" id="seekBtn">
+          <i class="mdi mdi-skip-forward"></i>
+        </button>
+      </div>
     </div>
-  </div>
-  <div id="lyrics" class="lyrics"></div>
-  <div id="footer" class="footer">Project Loota Kii - Kolahtaa Bongi</div>
-
-  <audio id="audio" src="assets/kolahtaa.opus"></audio>
-  <script src="js/audio.js" defer></script>
-  <script src="js/lyrics.js" defer></script>
-</body>
+    <div id="lyrics" class="lyrics"></div>
+    <div id="footer" class="footer">Project Loota Kii - Kolahtaa Bongi</div>
+    <audio id="audio" src="assets/kolahtaa.opus"></audio>
+    <script src="js/audio.js" defer></script>
+    <script src="js/lyrics.js" defer></script>
+  </body>
 
 </html>

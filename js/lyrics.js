@@ -1,6 +1,7 @@
 const lyricsAudio = document.getElementById("audio");
 const lyricsContainer = document.getElementById("lyrics");
 const lyricsJSON = "assets/kolahtaa.json";
+const extraHighlight = new Set(["Kuolleet shotit", "Eräkoira,"]); // modify as needed
 
 // time (in seconds) when lyrics should appear
 const lyricsAppearTime = 5;
@@ -16,27 +17,18 @@ fetchJSONData(lyricsJSON);
 async function fetchJSONData(JSON) {
   const response = await fetch(JSON);
   const json = await response.json();
-  paragraphs = groupWords(json);
-  wordsInfo = flattenWords(paragraphs);
+  const result = groupWords(json);     // returns both structures
+  paragraphs = result.paragraphs;
+  wordsInfo = result.wordsInfo;
   renderLyrics(paragraphs);
 }
 
-function flattenWords(paragraphs) {
-  const arr = [];
-  paragraphs.forEach((lines, pIndex) => {
-    lines.forEach((words, lIndex) => {
-      words.forEach((word, wIndex) => {
-        arr.push({ ...word, pIndex, lIndex, wIndex });
-      });
-    });
-  });
-  return arr.sort((a, b) => a.start - b.start);
-}
 
 function groupWords(json) {
   const lyricsWords = json.words;
   const paragraphs = [];
   const lineIndexMap = {};
+  const wordsInfo = [];
 
   lyricsWords.forEach(word => {
     const { pIndex, lIndex } = word;
@@ -56,14 +48,17 @@ function groupWords(json) {
       paragraphs[pIndex][normalizedLIndex] = [];
     }
 
-    paragraphs[pIndex][normalizedLIndex].push(word);
+    const wIndex = paragraphs[pIndex][normalizedLIndex].push(word) - 1;
+    wordsInfo.push({ ...word, pIndex, lIndex: normalizedLIndex, wIndex });
   });
 
-  return paragraphs;
+  wordsInfo.sort((a, b) => a.start - b.start);
+  return { paragraphs, wordsInfo };
 }
 
 function renderLyrics(paragraphs) {
   lyricsContainer.innerHTML = "";
+  const frag = document.createDocumentFragment();
 
   paragraphs.forEach((lines, pIndex) => {
     const paragraphDiv = document.createElement("p");
@@ -78,7 +73,8 @@ function renderLyrics(paragraphs) {
       words.forEach((word, wIndex) => {
         const span = document.createElement("span");
         span.className = "word";
-        span.id = `paragraph-${pIndex}-line-${lIndex}-word-${wIndex}`
+        span.id = `paragraph-${pIndex}-line-${lIndex}-word-${wIndex}`;
+        span.dataset.text = word.text;                        // store text for later
         span.textContent = word.text + " ";
         lineDiv.appendChild(span);
       });
@@ -86,8 +82,10 @@ function renderLyrics(paragraphs) {
       paragraphDiv.appendChild(lineDiv);
     });
 
-    lyricsContainer.appendChild(paragraphDiv);
+    frag.appendChild(paragraphDiv);
   });
+
+  lyricsContainer.appendChild(frag);
 }
 
 // ======== LYRICS SYNC ========
@@ -190,18 +188,22 @@ audio.addEventListener("timeupdate", () => {
 
 // ======== HIGHLIGHT CURRENT WORD ========
 function setActiveWord(pIndex, lIndex, wIndex) {
-  // Remove active from all words
-  document.querySelectorAll(".word").forEach(w => w.classList.remove("active"));
+  // Remove active (and special) from all words
+  document.querySelectorAll(".word").forEach(w => {
+    w.classList.remove("active", "extra");
+  });
 
   const wordObj = paragraphs[pIndex][lIndex][wIndex];
-  //console.log("p" + pIndex + " l" + lIndex + " w" + wIndex + ": " + wordObj.text)
-  
   if (!wordObj) return;
   const wordSpan = document.getElementById(
     `paragraph-${pIndex}-line-${lIndex}-word-${wIndex}`
   );
   if (wordSpan) {
     wordSpan.classList.add("active");
+    // if the text appears in the extraHighlight set, add extra highlight
+    if (extraHighlight.has(wordObj.text)) {
+      wordSpan.classList.add("extra");
+    }
     // Scroll current line into view
     const lineDiv = document.getElementById(`paragraph-${pIndex}-line-${lIndex}`);
     lineDiv.scrollIntoView({ behavior: "smooth", block: "center" });

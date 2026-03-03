@@ -136,6 +136,12 @@ body {
   font-weight: bold;
 }
 
+/* additional highlight for specifically matched word */
+.word.extra.active {
+  font-size: 36px;
+  text-shadow: 0 0 30px #c0c0c0;
+}
+
 .footer {
   position: fixed;          /* stick to viewport */
   bottom: 0;
